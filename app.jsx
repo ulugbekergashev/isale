@@ -658,58 +658,44 @@ const VideoTile = ({ src, title, client, year, category, span = '', large = fals
   );
 };
 
-// ---------- WORKS (PORTFOLIO) ----------
-const Works = () => {
-  const items = [
-    {
-      src: "Jahongirr.mov",
-      title: "Urolog Jahongir",
-      client: "@urolog_jahongir",
-      year: "2024",
-      category: "Reels / Expert",
-      span: "col-span-12 md:col-span-4 row-span-3"
-    },
-    {
-      src: "on(mrt1.4).mp4",
-      title: "Dr. Dildora",
-      client: "@ginekolog.dildora",
-      year: "2024",
-      category: "Reels / Medical",
-      span: "col-span-12 md:col-span-4 row-span-3"
-    },
-    {
-      src: "ren1.mp4",
-      title: "Central Man",
-      client: "@centralmanclinic",
-      year: "2024",
-      category: "Ads / Promo",
-      span: "col-span-12 md:col-span-4 row-span-3"
+// ---------- Review Video Player ----------
+const ReviewVideo = ({ src }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) videoRef.current.play();
+      else videoRef.current.pause();
     }
-  ];
+  };
 
   return (
-    <section id="works" className="relative px-5 md:px-10 py-16 border-t hairline overflow-hidden">
-      <div className="max-w-[1400px] mx-auto w-full">
-
-        <div className="grid grid-cols-12 gap-4 md:auto-rows-[160px]">
-          {items.map((it, i) => (
-            <VideoTile key={i} {...it} />
-          ))}
-        </div>
-
-        <Reveal delay={0.4}>
-          <div className="mt-16 flex flex-col items-center justify-center border-t border-dashed border-[#1F1F1B] pt-16">
-            <div className="text-center mb-8">
-              <div className="display text-3xl md:text-4xl mb-3">Sizniki ham shunday bo'lishi mumkin</div>
-              <p className="text-[#9A9A92]">Birinchi oydanoq organik o'sishni boshlang</p>
-            </div>
-            <a onClick={goCTA} href={TG_LINK} className="btn-primary px-8 py-5 rounded-2xl text-lg font-semibold flex items-center gap-4">
-              Loyihani boshlash <Arrow/>
-            </a>
+    <div
+      className="w-full aspect-[9/16] bg-black border hairline relative overflow-hidden group/vid cursor-pointer rounded-xl"
+      onClick={togglePlay}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        playsInline
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        className={`w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-60 group-hover/vid:opacity-80 group-hover/vid:scale-105'}`}
+      />
+      <div className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40"/>
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="w-16 h-16 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white backdrop-blur-md group-hover/vid:scale-110 group-hover/vid:bg-[#D4FF3F] group-hover/vid:text-black group-hover/vid:border-[#D4FF3F] transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
-        </Reveal>
+        </div>
+        <div className="absolute bottom-4 left-4 flex items-center gap-2 pointer-events-none z-10">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#D4FF3F] animate-pulse" />
+          <span className="mono text-[9px] uppercase tracking-wider text-white/70">Reels</span>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -795,27 +781,7 @@ const Testimonials = () => {
               <div className="border hairline bg-[#0E0E0C] p-6 flex flex-col gap-5 hover:border-[#D4FF3F]/30 transition-all duration-300 h-full">
 
                 {/* video */}
-                <div className="w-full aspect-[9/16] bg-[#0A0A0A] border hairline relative overflow-hidden group/vid cursor-pointer">
-                  <video
-                    src={r.video}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110"
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    onClick={(e) => {
-                      if (e.target.paused) e.target.play();
-                      else e.target.pause();
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#D4FF3F] animate-pulse" />
-                      <span className="mono text-[10px] uppercase tracking-wider text-white/80">Reels</span>
-                    </div>
-                  </div>
-                </div>
+                <ReviewVideo src={r.video} />
 
                 {/* quote */}
                 <p className="text-sm md:text-base text-[#C8C8BE] leading-relaxed flex-1">
@@ -1588,7 +1554,7 @@ function App(){
       <Problem/>
       <Solution/>
       <CounterStrip/>
-      <Works/>
+
       <Proof/>
       <Testimonials/>
       <Guarantee/>
