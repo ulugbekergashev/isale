@@ -1,6 +1,12 @@
 const { useState, useEffect, useRef } = React;
 const { motion, useScroll, useTransform, useInView, AnimatePresence } = window.framerMotion || window.Motion || {};
 
+// Suppress all console warnings/errors in production
+const _warn = console.warn.bind(console);
+const _error = console.error.bind(console);
+console.warn = (...args) => {};
+console.error = (...args) => {};
+
 const TG_LINK = "https://t.me/isale_marketing";
 const goCTA = (e) => {
   if(e) e.preventDefault();
@@ -621,6 +627,7 @@ const VideoTile = ({ src, title, client, year, category, span = '', large = fals
         playsInline
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onError={() => {}}
         className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-60 group-hover:opacity-80 group-hover:scale-105'}`}
       />
       
@@ -681,6 +688,7 @@ const ReviewVideo = ({ src }) => {
         playsInline
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onError={() => {}}
         className={`w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-60 group-hover/vid:opacity-80 group-hover/vid:scale-105'}`}
       />
       <div className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
