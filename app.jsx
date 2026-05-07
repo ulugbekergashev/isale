@@ -719,7 +719,7 @@ const Testimonials = () => {
       result: "120,000 obunachi — 5 oyda",
       cat: "Tibbiyot",
       initials: "JT",
-      video: "Jahongirr.mov",
+      video: "Jahongirr.mp4",
       text: "Isale.Marketing bilan hamkorlik qilgandan so'ng akkauntim butunlay o'zgardi. Har kuni professional video, har kuni o'sish. 5 oy ichida 120 ming obunachi — bu real natija.",
     },
     {
@@ -737,7 +737,7 @@ const Testimonials = () => {
       result: "37,000 obunachi — 4 oyda",
       cat: "Klinika",
       initials: "BM",
-      video: "ren1.mp4",
+      video: "ren1.mov",
       text: "Kafolat berib ishlashadi — bu eng muhimi. Natija bo'lmasa to'lov yo'q. Biz 4 oy ichida 37 ming obunachiga yetdik va klinikaga tashrif buyuruvchilar soni ikki barobarga oshdi.",
     },
   ];
