@@ -159,24 +159,34 @@ const server = http.createServer((req, res) => {
 
   // Serve static files
   let filePath = req.url === '/' ? '/index.html' : req.url;
-  // /manage -> admin.html
   if (filePath === '/manage') filePath = '/admin.html';
   
   const extname = String(path.extname(filePath)).toLowerCase();
   const contentType = mimeTypes[extname] || 'application/octet-stream';
 
-  fs.readFile(path.join(__dirname, filePath), (err, content) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('404 Not Found', 'utf-8');
-      } else {
-        res.writeHead(500);
-        res.end('Sorry, check with the site admin for error: ' + err.code + ' ..\n');
-      }
-    } else {
+  // Try public folder first, then root
+  const publicPath = path.join(__dirname, 'public', filePath);
+  const rootPath = path.join(__dirname, filePath);
+
+  fs.readFile(publicPath, (err, content) => {
+    if (!err) {
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content, 'utf-8');
+    } else {
+      fs.readFile(rootPath, (err2, content2) => {
+        if (err2) {
+          if (err2.code === 'ENOENT') {
+            res.writeHead(404, { 'Content-Type': 'text/html' });
+            res.end('404 Not Found', 'utf-8');
+          } else {
+            res.writeHead(500);
+            res.end('Sorry, check with the site admin for error: ' + err2.code + ' ..\n');
+          }
+        } else {
+          res.writeHead(200, { 'Content-Type': contentType });
+          res.end(content2, 'utf-8');
+        }
+      });
     }
   });
 });

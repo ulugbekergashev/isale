@@ -85,7 +85,6 @@ const TopBar = () => (
             MARKETING
           </div>
         </div>
-        <span className="hidden md:inline text-[12px] mono uppercase tracking-[0.14em] text-[#5A5A52] ml-2">/ Direct Response Studio</span>
       </div>
       <nav className="hidden md:flex items-center gap-6 text-[#9A9A92] text-[12px] mono uppercase tracking-[0.14em]" aria-label="Asosiy navigatsiya">
         <a href="#proof" className="hover:text-[#D4FF3F]">Natijalar</a>
