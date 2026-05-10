@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Protect data.json from direct access (compatible with all Apache versions)
+RewriteRule ^data\.json$ - [F,L]
+
+# /manage or /manage/ -> manage.php
+RewriteRule ^manage/?$ manage.php [L]
+
+# /api/* -> api.php?action=*
+RewriteRule ^api/(.*)$ api.php?action=$1 [QSA,L]
