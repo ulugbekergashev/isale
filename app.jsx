@@ -707,6 +707,29 @@ const ReviewVideo = ({ src }) => {
   );
 };
 
+const InstaAvatar = ({ handle, fallbackText, className }) => {
+  const [error, setError] = useState(false);
+  const cleanHandle = handle ? handle.replace('@', '') : '';
+  const src = `https://unavatar.io/instagram/${cleanHandle}?fallback=false`;
+  
+  if (error || !cleanHandle) {
+    return (
+      <div className={className}>
+        {fallbackText}
+      </div>
+    );
+  }
+  return (
+    <img 
+      src={src} 
+      alt={cleanHandle} 
+      className={className.replace('flex items-center justify-center text-[#D4FF3F]', '').replace('flex items-center justify-center text-black', '') + " object-cover"}
+      onError={() => setError(true)}
+      loading="lazy"
+    />
+  );
+};
+
 // ---------- TESTIMONIALS ----------
 const Testimonials = () => {
   const [clients, setClients] = useState([]);
@@ -736,9 +759,11 @@ const Testimonials = () => {
               target="_blank" rel="noopener noreferrer"
               className="group flex items-center gap-3 border hairline bg-[#0E0E0C] px-4 py-3 hover:border-[#D4FF3F]/40 hover:bg-[#0F1206] transition-all duration-200"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#D4FF3F]/30 to-[#D4FF3F]/10 border border-[#D4FF3F]/20 flex items-center justify-center mono text-[10px] font-bold text-[#D4FF3F] shrink-0">
-                {c.label.charAt(0)}
-              </div>
+              <InstaAvatar 
+                handle={c.handle} 
+                fallbackText={c.label.charAt(0)} 
+                className="w-8 h-8 rounded-full bg-[#111110] border border-[#D4FF3F]/20 flex items-center justify-center mono text-[10px] font-bold text-[#D4FF3F] shrink-0" 
+              />
               <div>
                 <div className="mono text-[10px] text-[#5A5A52] uppercase tracking-[0.12em]">@{c.handle}</div>
                 <div className="font-semibold text-[#F5F5F0] text-sm mt-0.5">
@@ -771,9 +796,11 @@ const Testimonials = () => {
                 {/* author */}
                 <div className="flex items-center gap-3 pt-5 mt-auto">
                   <div className="relative shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4FF3F] to-[#6E8A1E] flex items-center justify-center text-black text-base font-bold">
-                      {r.initials}
-                    </div>
+                    <InstaAvatar 
+                      handle={r.handle} 
+                      fallbackText={r.initials} 
+                      className="w-12 h-12 rounded-full bg-[#111110] border border-[#D4FF3F]/20 flex items-center justify-center text-[#D4FF3F] text-base font-bold shrink-0" 
+                    />
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#0C0C0A] border hairline rounded-full flex items-center justify-center">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="#D4FF3F"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                     </div>

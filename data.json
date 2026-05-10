@@ -59,15 +59,6 @@
   ],
   "reviews": [
     {
-      "name": "yangi ",
-      "handle": "@mijoz",
-      "result": "50000+",
-      "cat": "vrach",
-      "initials": "JT",
-      "video": "Jahongirr.mov",
-      "text": "oxirgi\n"
-    },
-    {
       "name": "Jahongir To'raxonov",
       "handle": "urolog_jahongir",
       "result": "120,000 obunachi — 5 oyda",
@@ -82,7 +73,7 @@
       "result": "27,000 obunachi — 3 oyda",
       "cat": "Tibbiyot",
       "initials": "DN",
-      "video": "on(mrt1.4).mp4",
+      "video": "ren1.mov",
       "text": "Avval ijtimoiy tarmoqqa umid qilmagan edim. Isale jamoasi mening brendimni to'liq qayta qurdi. Endi har oyda yangi bemorlar faqat Instagram orqali kelmoqda."
     },
     {
@@ -91,7 +82,7 @@
       "result": "37,000 obunachi — 4 oyda",
       "cat": "Klinika",
       "initials": "BM",
-      "video": "ren1.mov",
+      "video": "on(mrt1.4).mp4",
       "text": "Kafolat berib ishlashadi — bu eng muhimi. Natija bo'lmasa to'lov yo'q. Biz 4 oy ichida 37 ming obunachiga yetdik va klinikaga tashrif buyuruvchilar soni ikki barobarga oshdi."
     }
   ],
