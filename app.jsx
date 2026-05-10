@@ -709,46 +709,18 @@ const ReviewVideo = ({ src }) => {
 
 // ---------- TESTIMONIALS ----------
 const Testimonials = () => {
-  const clients = [
-    { handle:"profmedservice",    label:"Prof Med Service",    n:"50,000", mo:"4 oy", cat:"Tibbiyot" },
-    { handle:"urolog_saidislom",  label:"Urolog Saidislom",   n:"50,000", mo:"3 oy", cat:"Tibbiyot" },
-    { handle:"urolog_jahongir",   label:"Urolog Jahongir",    n:"120,000",mo:"5 oy", cat:"Tibbiyot" },
-    { handle:"centralmanclinic",  label:"Central Man Clinic", n:"37,000", mo:"4 oy", cat:"Tibbiyot" },
-    { handle:"openshop_uz",       label:"Open Shop UZ",       n:"40,000", mo:"3 oy", cat:"E-commerce" },
-    { handle:"dr.aziz.nevrolog",  label:"Dr. Aziz Nevrolog",  n:"10,000", mo:"1 oy", cat:"Tibbiyot" },
-    { handle:"umurtqa.markazi",   label:"Umurtqa Markazi",    n:"15,000", mo:"2 oy", cat:"Tibbiyot" },
-    { handle:"ginekolog.dildora", label:"Ginekolog Dildora",  n:"27,000", mo:"3 oy", cat:"Tibbiyot" },
-  ];
+  const [clients, setClients] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-  const reviews = [
-    {
-      name: "Jahongir To'raxonov",
-      handle: "urolog_jahongir",
-      result: "120,000 obunachi — 5 oyda",
-      cat: "Tibbiyot",
-      initials: "JT",
-      video: "Jahongirr.mp4",
-      text: "Isale.Marketing bilan hamkorlik qilgandan so'ng akkauntim butunlay o'zgardi. Har kuni professional video, har kuni o'sish. 5 oy ichida 120 ming obunachi — bu real natija.",
-    },
-    {
-      name: "Dildora Nuriddinovna",
-      handle: "ginekolog.dildora",
-      result: "27,000 obunachi — 3 oyda",
-      cat: "Tibbiyot",
-      initials: "DN",
-      video: "on(mrt1.4).mp4",
-      text: "Avval ijtimoiy tarmoqqa umid qilmagan edim. Isale jamoasi mening brendimni to'liq qayta qurdi. Endi har oyda yangi bemorlar faqat Instagram orqali kelmoqda.",
-    },
-    {
-      name: "Bobur Mamadaliyev",
-      handle: "centralmanclinic",
-      result: "37,000 obunachi — 4 oyda",
-      cat: "Klinika",
-      initials: "BM",
-      video: "ren1.mov",
-      text: "Kafolat berib ishlashadi — bu eng muhimi. Natija bo'lmasa to'lov yo'q. Biz 4 oy ichida 37 ming obunachiga yetdik va klinikaga tashrif buyuruvchilar soni ikki barobarga oshdi.",
-    },
-  ];
+  useEffect(() => {
+    fetch('/api/data')
+      .then(r => r.json())
+      .then(data => {
+        setClients(data.clients || []);
+        setReviews(data.reviews || []);
+      })
+      .catch(e => console.error("Data load error:", e));
+  }, []);
 
   return (
     <section id="testimonials" className="border-t hairline overflow-hidden">
@@ -1267,7 +1239,16 @@ const CTAForm = () => {
     setSubmitting(true);
     setSent(true);
     try { localStorage.removeItem("isale_form_v1"); } catch {}
-    setTimeout(()=>{ window.open(TG_LINK,"_blank","noopener"); }, 800);
+
+    // Server orqali jo'natamiz — bot token brauzerga chiqmaydi
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: data.name, phone: data.phone, insta: data.insta,
+        niche: data.niche, budget: data.budget, goal: data.goal
+      })
+    }).catch(() => {});
   };
 
   return (
