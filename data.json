@@ -5,56 +5,64 @@
       "label": "Prof Med Service",
       "n": "50,000",
       "mo": "4 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "425326987_374281882006811_7783852645485127099_n.jpg"
     },
     {
       "handle": "urolog_saidislom",
       "label": "Urolog Saidislom",
       "n": "50,000",
       "mo": "3 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "486803837_1710517023156001_660409482418740582_n.jpg"
     },
     {
       "handle": "urolog_jahongir",
       "label": "Urolog Jahongir",
       "n": "120,000",
       "mo": "5 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "504342312_18482868226067764_6199740384940291680_n.jpg"
     },
     {
       "handle": "centralmanclinic",
       "label": "Central Man Clinic",
       "n": "37,000",
       "mo": "4 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "580841006_18317505496218119_7888430155420275677_n.jpg"
     },
     {
       "handle": "openshop_uz",
       "label": "Open Shop UZ",
       "n": "40,000",
       "mo": "3 oy",
-      "cat": "E-commerce"
+      "cat": "E-commerce",
+      "avatar": "587003790_17853830004583830_8004195082250216104_n.jpg"
     },
     {
       "handle": "dr.aziz.nevrolog",
       "label": "Dr. Aziz Nevrolog",
       "n": "10,000",
       "mo": "1 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "587778803_18087763529296666_789706550092538012_n.jpg"
     },
     {
       "handle": "umurtqa.markazi",
       "label": "Umurtqa Markazi",
       "n": "15,000",
       "mo": "2 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "611245427_17847948324627051_2540662626516843663_n.jpg"
     },
     {
       "handle": "ginekolog.dildora",
       "label": "Ginekolog Dildora",
       "n": "27,000",
       "mo": "3 oy",
-      "cat": "Tibbiyot"
+      "cat": "Tibbiyot",
+      "avatar": "660126963_17868556086600231_6773134828094860771_n.jpg"
     }
   ],
   "reviews": [
@@ -65,7 +73,8 @@
       "cat": "Tibbiyot",
       "initials": "JT",
       "video": "Jahongirr.mp4",
-      "text": "Isale.Marketing bilan hamkorlik qilgandan so'ng akkauntim butunlay o'zgardi. Har kuni professional video, har kuni o'sish. 5 oy ichida 120 ming obunachi — bu real natija."
+      "text": "Isale.Marketing bilan hamkorlik qilgandan so'ng akkauntim butunlay o'zgardi. Har kuni professional video, har kuni o'sish. 5 oy ichida 120 ming obunachi — bu real natija.",
+      "avatar": "504342312_18482868226067764_6199740384940291680_n.jpg"
     },
     {
       "name": "Dildora Nuriddinovna",
@@ -74,7 +83,8 @@
       "cat": "Tibbiyot",
       "initials": "DN",
       "video": "ren1.mov",
-      "text": "Avval ijtimoiy tarmoqqa umid qilmagan edim. Isale jamoasi mening brendimni to'liq qayta qurdi. Endi har oyda yangi bemorlar faqat Instagram orqali kelmoqda."
+      "text": "Avval ijtimoiy tarmoqqa umid qilmagan edim. Isale jamoasi mening brendimni to'liq qayta qurdi. Endi har oyda yangi bemorlar faqat Instagram orqali kelmoqda.",
+      "avatar": "660126963_17868556086600231_6773134828094860771_n.jpg"
     },
     {
       "name": "Bobur Mamadaliyev",
@@ -83,7 +93,8 @@
       "cat": "Klinika",
       "initials": "BM",
       "video": "on(mrt1.4).mp4",
-      "text": "Kafolat berib ishlashadi — bu eng muhimi. Natija bo'lmasa to'lov yo'q. Biz 4 oy ichida 37 ming obunachiga yetdik va klinikaga tashrif buyuruvchilar soni ikki barobarga oshdi."
+      "text": "Kafolat berib ishlashadi — bu eng muhimi. Natija bo'lmasa to'lov yo'q. Biz 4 oy ichida 37 ming obunachiga yetdik va klinikaga tashrif buyuruvchilar soni ikki barobarga oshdi.",
+      "avatar": "580841006_18317505496218119_7888430155420275677_n.jpg"
     }
   ],
   "settings": {

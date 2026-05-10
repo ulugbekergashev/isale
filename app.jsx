@@ -707,12 +707,12 @@ const ReviewVideo = ({ src }) => {
   );
 };
 
-const InstaAvatar = ({ handle, fallbackText, className }) => {
+const InstaAvatar = ({ handle, avatarFile, fallbackText, className }) => {
   const [error, setError] = useState(false);
   const cleanHandle = handle ? handle.replace('@', '') : '';
-  const src = `https://unavatar.io/instagram/${cleanHandle}?fallback=false`;
+  const src = avatarFile ? `/${avatarFile}` : `https://unavatar.io/instagram/${cleanHandle}?fallback=false`;
   
-  if (error || !cleanHandle) {
+  if (error || (!cleanHandle && !avatarFile)) {
     return (
       <div className={className}>
         {fallbackText}
@@ -761,6 +761,7 @@ const Testimonials = () => {
             >
               <InstaAvatar 
                 handle={c.handle} 
+                avatarFile={c.avatar}
                 fallbackText={c.label.charAt(0)} 
                 className="w-8 h-8 rounded-full bg-[#111110] border border-[#D4FF3F]/20 flex items-center justify-center mono text-[10px] font-bold text-[#D4FF3F] shrink-0" 
               />
@@ -798,6 +799,7 @@ const Testimonials = () => {
                   <div className="relative shrink-0">
                     <InstaAvatar 
                       handle={r.handle} 
+                      avatarFile={r.avatar}
                       fallbackText={r.initials} 
                       className="w-12 h-12 rounded-full bg-[#111110] border border-[#D4FF3F]/20 flex items-center justify-center text-[#D4FF3F] text-base font-bold shrink-0" 
                     />
